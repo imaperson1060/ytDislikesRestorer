@@ -15,25 +15,25 @@ To use this app, you will need to make your own Google Cloud Project (not as dau
 
 1. Create a project at [console.cloud.google.com](https://console.cloud.google.com/) 
 
-   ![image-20220325180123022](docs\setup-1.png)
+   ![setup-1](https://user-images.githubusercontent.com/68653653/160212067-161c905e-5777-4e9f-a2d4-96790ebfc467.png)
 
 2. Go to the APIs & Services Library
 
-   ![image-20220325180339022](docs\setup-2.png)
+   ![setup-2](https://user-images.githubusercontent.com/68653653/160212081-5294b5c6-3c35-47df-a1f3-2e9806435769.png)
 
 3. Enable the YouTube Data API
 
-   ![image-20220325180443003](docs\setup-3.png)
+   ![setup-3](https://user-images.githubusercontent.com/68653653/160212094-850b1da1-0110-4032-b068-25e3cb4db6a6.png)
 
 4. Create credentials
 
-   ![image-20220325182900988](docs\setup-4.png)
+   ![setup-4](https://user-images.githubusercontent.com/68653653/160212099-1c77c016-19ed-4c38-bfab-2763a3ec1c52.png)
 
-5. ![image-20220325182933112](docs\setup-5-1.png)
+5. ![setup-5-1](https://user-images.githubusercontent.com/68653653/160212103-b08993d7-ca3f-44d9-bc00-e79b7cbcd304.png)
 
-   ![image-20220325183026708](docs\setup-5-2.png)
+   ![setup-5-2](https://user-images.githubusercontent.com/68653653/160212105-9b894caf-aef2-4e5f-b24b-356f2c2dbba4.png)
 
-![image-20220325183223782](docs\setup-5-3.png)
+   ![setup-5-3](https://user-images.githubusercontent.com/68653653/160212111-93ec8ee8-ccda-4ce3-907a-4a83042f5645.png)
 
 6. Create a `.env` file using the following template:
 
