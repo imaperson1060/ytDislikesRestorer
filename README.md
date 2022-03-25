@@ -15,25 +15,25 @@ To use this app, you will need to make your own Google Cloud Project (not as dau
 
 1. Create a project at [console.cloud.google.com](https://console.cloud.google.com/) 
 
-   ![image-20220325180123022](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-1.png)
+   ![image-20220325180123022](docs\setup-1.png)
 
 2. Go to the APIs & Services Library
 
-   ![image-20220325180339022](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-2.png)
+   ![image-20220325180339022](docs\setup-2.png)
 
 3. Enable the YouTube Data API
 
-   ![image-20220325180443003](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-3.png)
+   ![image-20220325180443003](docs\setup-3.png)
 
 4. Create credentials
 
-   ![image-20220325182900988](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-4.png)
+   ![image-20220325182900988](docs\setup-4.png)
 
-5. ![image-20220325182933112](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-5-1.png)
+5. ![image-20220325182933112](docs\setup-5-1.png)
 
-   ![image-20220325183026708](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-5-2.png)
+   ![image-20220325183026708](docs\setup-5-2.png)
 
-![image-20220325183223782](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-5-3.png)
+![image-20220325183223782](docs\setup-5-3.png)
 
 6. Create a `.env` file using the following template:
 
