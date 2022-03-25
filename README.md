@@ -29,11 +29,11 @@ To use this app, you will need to make your own Google Cloud Project (not as dau
 
    ![image-20220325182900988](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-4.png)
 
-5. ![image-20220325182933112](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20220325182933112.png)
+5. ![image-20220325182933112](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-5-1.png)
 
-   ![image-20220325183026708](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-4-2.png)
+   ![image-20220325183026708](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-5-2.png)
 
-![image-20220325183223782](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-4-3.png)
+![image-20220325183223782](C:\Users\user\Documents\GitHub\ytDislikesRestorer\docs\setup-5-3.png)
 
 6. Create a `.env` file using the following template:
 
