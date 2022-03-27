@@ -4,12 +4,27 @@
         <%- include("./header/mainheader", { title: "YouTube Dislikes" }); -%>
     </head>
     <body>
-        <%- include("./navbar/navbar", { page: "/run" }); -%>
+        <%- include("./navbar/navbar", { page: "/run", optimized }); -%>
 
         <div class="container">
             <br>
-            <h1>Updating videos...</h1>
-            <p class="lead">This may take some time based on how many videos you selected.</p>
+            <% if (run) { %>
+                <h1>Updating video<%= !optimized ? "s" : "" %>...</h1>
+                <% if (!optimized) { %>
+                    <p class="lead">This may take some time based on how many videos you selected.</p>
+                <% } %>
+                <form action="/run" method="POST">
+                    <button class="btn btn-primary" name="showForm" value="true">Show form</button>
+                </form>
+            <% } else { %>
+                <form action="/run" method="POST">
+                    <% if (optimized) { %>
+                        <input type="text" class="form-control" name="videoId" placeholder="Video ID" required>
+                        <br>
+                    <% } %>
+                    <button class="btn btn-primary">Run</button>
+                </form>
+            <% } %>
         </div>
     </body>
 </html>

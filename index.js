@@ -46,31 +46,62 @@ app.get("/*", async (req, res, next) => {
 });
 
 app.get("/", async (req, res) => {
-    res.end(await res.render("index.ejs"));
+    res.end(await res.render("index.ejs", { optimized: db_get("/optimized") }));
 });
 
 app.get("/channel", async (req, res) => {
     var stats = {};
     for await (const x of videos) stats[x.id.videoId] = ((await youtube.videos.list({ part: "statistics", id: x.id.videoId })).data.items)[0];
-    res.end(await res.render("channel.ejs", { videos, stats, database: db_get("/videos") || [] }));
+    res.end(await res.render("channel.ejs", { videos, stats, database: db_get("/videos") || [], optimized: db_get("/optimized") }));
+});
+
+app.get("/settings", async (req, res) => {
+    res.end(await res.render("settings.ejs", { optimized: db_get("/optimized") }));
+});
+
+app.post("/settings", async (req, res) => {
+    db.push("/optimized", req.body.optimizationMode == "optimized");
+    res.end(await res.render("settings.ejs", { optimized: db_get("/optimized") }));
 });
 
 app.get("/run", async (req, res) => {
-    db_get("/videos").forEach(async x => {
-        const video = (await youtube.videos.list({ part: "snippet,statistics", id: x })).data.items[0];
+    res.end(await res.render("run.ejs", { run: false, optimized: db_get("/optimized") }));
+});
+
+app.post("/run", async (req, res) => {
+    if (req.body.videoId) {
+        const video = (await youtube.videos.list({ part: "snippet,statistics", id: req.body.videoId })).data.items[0];
+
         if (video.snippet.localized.title.match(/\[👍 \d* 👎 \d*\]/g)) {
             video.snippet.title = video.snippet.localized.title.replace(/\[👍 \d* 👎 \d*\]/g, `[👍 ${video.statistics.likeCount} 👎 ${video.statistics.dislikeCount}]`);
         } else {
             video.snippet.title = `${video.snippet.localized.title} [👍 ${video.statistics.likeCount} 👎 ${video.statistics.dislikeCount}]`;
         }
-            
+                
         await youtube.videos.update({
             part: "id,localizations,snippet,statistics",
-            id: x,
+            id: req.body.videoId,
             resource: video
         });
-    });
-    res.end(await res.render("run.ejs"));
+    } else {
+        db_get("/videos").forEach(async x => {
+            const video = (await youtube.videos.list({ part: "snippet,statistics", id: x })).data.items[0];
+
+            if (video.snippet.localized.title.match(/\[👍 \d* 👎 \d*\]/g)) {
+                video.snippet.title = video.snippet.localized.title.replace(/\[👍 \d* 👎 \d*\]/g, `[👍 ${video.statistics.likeCount} 👎 ${video.statistics.dislikeCount}]`);
+            } else {
+                video.snippet.title = `${video.snippet.localized.title} [👍 ${video.statistics.likeCount} 👎 ${video.statistics.dislikeCount}]`;
+            }
+                
+            await youtube.videos.update({
+                part: "id,localizations,snippet,statistics",
+                id: x,
+                resource: video
+            });
+        });
+    }
+    
+    res.end(await res.render("run.ejs", { run: req.body.showForm ? false : true, optimized: db_get("/optimized") }));
 });
 
 app.post("/", async (req, res) => {

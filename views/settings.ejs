@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("./header/mainheader", { title: "YouTube Dislikes" }); -%>
+    </head>
+    <body>
+        <%- include("./navbar/navbar", { page: "/preferences", optimized }); -%>
+
+        <div class="container">
+            <br>
+            <form action="/settings" method="POST">
+                <div class="card">
+                    <div class="card-header">
+                        Optimization Mode
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <input type="radio" id="optimizedModeRadio" class="btn-check" name="optimizationMode" value="optimized"<%= optimized ? " checked" : "" %>>
+                            <label class="btn btn-outline-success" for="optimizedModeRadio">Optimized Mode</label>
+                            <p class="lead">Best for larger channels or if you want to update only a certain video</p>
+                        </li>
+                        <li class="list-group-item">
+                            <input type="radio" id="nonOptimizedModeRadio" class="btn-check" name="optimizationMode" value="nonOptimized"<%= !optimized ? " checked" : "" %>>
+                            <label class="btn btn-outline-danger" for="nonOptimizedModeRadio">Non-Optimized Mode</label>
+                            <p class="lead">Best for smaller channels with fewer videos to update every time the app is restarted</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <br>
+
+                <button class="btn btn-primary">Update preferences</button>
+            </form>
+        </div>
+    </body>
+</html>
