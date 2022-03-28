@@ -32,6 +32,12 @@ const youtube = await google.youtube({
 
 var videos = [];
 
+app.get("/google/auth", async (req, res) => {
+    const { tokens } = await oauth2Client.getToken(req.query.code);
+    oauth2Client.setCredentials(tokens);
+    res.redirect("/");
+});
+
 app.get("/*", async (req, res, next) => {
     if (!db_get("/refreshToken")) {
         var url = await oauth2Client.generateAuthUrl({
@@ -137,12 +143,6 @@ app.post("/", async (req, res) => {
     if (req.body.refreshVideos) await getVideos();
 
     res.redirect(req.body.ref);
-});
-
-app.get("/google/auth", async (req, res) => {
-    const { tokens } = await oauth2Client.getToken(req.query.code);
-    oauth2Client.setCredentials(tokens);
-    res.redirect("/");
 });
 
 oauth2Client.on("tokens", async (tokens) => {
