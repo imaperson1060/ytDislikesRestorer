@@ -40,12 +40,13 @@ To use this app, you will need to make your own Google Cloud Project (not as dau
    ```
    CLIENT_ID=[client id]
    CLIENT_SECRET=[client secret]
+   REDIRECT_URI=http://localhost:3000/google/auth
    
    PORT=3000
    ```
 
    - You can find the client details on the credentials page by downloading the OAuth2 client
-   - Changing the port will require you to change the Redirect URI declared in Step 5
+   - Changing the port will require you to change the Redirect URI declared in Step 5 and in the `.env` file
    - Do not share this file with anyone
 
 7. If you don't already have it, download and install [NodeJS](https://nodejs.dev)
