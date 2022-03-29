@@ -42,6 +42,7 @@ app.get("/*", async (req, res, next) => {
     if (!db_get("/refreshToken")) {
         var url = await oauth2Client.generateAuthUrl({
             access_type: "offline",
+            prompt: "consent",
             scope: [ "https://www.googleapis.com/auth/youtube" ]
         });
     
