@@ -34,7 +34,7 @@ var videos = [];
 
 app.get("/google/auth", async (req, res) => {
     const { tokens } = await oauth2Client.getToken(req.query.code);
-    oauth2Client.setCredentials(tokens);
+    await oauth2Client.setCredentials(tokens);
     res.redirect("/");
 });
 
